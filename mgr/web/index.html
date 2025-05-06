@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>mgr</title>
+
+    <!-- typical libs for web -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        .button {
+            border: 3px solid #3d3d3d;
+            background-color: #4b4b4b;
+        }
+
+        @font-face {
+            font-family: 'warsawgothic';
+            src: url('./img/warsawgothic.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        *:not(i) {
+            font-size: 1.5rem !important;
+            color: #ffffff !important;
+            text-shadow: 0 0 1px #ffffff;
+            font-family: 'warsawgothic', sans-serif !important;
+            text-transform: uppercase !important;
+        }
+    </style>
+</head>
+<body class="bg-black">
+<div class="p-2 vh-100" id="app">
+
+    <!-- button container -->
+    <div class="d-flex flex-row d-none" id="buttons"></div>
+
+    <!-- menu button -->
+    <div class="position-fixed btn rounded-circle button" style="bottom: 1rem;right:1rem;" id="menue_button"
+         onclick="$.ask.show_menu();">
+        <i class="fa-solid fa-gear"></i>
+    </div>
+</div>
+
+<!-- error modal -->
+<div class="d-none position-fixed start-50 top-50 translate-middle p-5 text-center button" id="error"></div>
+
+<!-- enter code modal -->
+<div class="d-none position-fixed start-50 top-50 translate-middle p-5 text-center button" id="code_input">
+    <p>
+        Enter your code, survivor
+    </p>
+    <p>
+        <input type="text" size="1" maxlength="1" class="button" id="code_input_field_1"
+               oninput="document.getElementById('code_input_field_2').focus();"/>
+        <input type="text" size="1" maxlength="1" class="button" id="code_input_field_2"
+               oninput="document.getElementById('code_input_field_3').focus();"/>
+        <input type="text" size="1" maxlength="1" class="button" id="code_input_field_3"
+               oninput="document.getElementById('code_input_field_4').focus();"/>
+        <input type="text" size="1" maxlength="1" class="button" id="code_input_field_4"
+               oninput="document.getElementById('code_input_field_5').focus();"/>
+        <input type="text" size="1" maxlength="1" class="button" id="code_input_field_5"
+               oninput="document.getElementById('code_input_button').focus();"/>
+        <input type="hidden" size="10" maxlength="10" class="button" id="code_input_field"/>
+    </p>
+    <p>
+        <button class="p-1 px-2 button" onclick="$.ask.process_code();" id="code_input_button">check my code</button>
+    </p>
+    <div class="position-absolute" style="right: 1rem; bottom:1rem;" id="code_input_help_button"
+         onclick="document.getElementById('code_input_help').classList.toggle('d-none');"><i
+            class="fa-solid fa-circle-question btn"></i></div>
+</div>
+
+<!-- code help modal -->
+<div class="d-none position-fixed start-50 top-50 translate-middle p-5 button" id="code_input_help"
+     onclick="this.classList.add('d-none');">
+    <p class="text-center">
+        to get the code, follow these instructions:
+    </p>
+    <ol>
+        <li>start your game</li>
+        <li>open the console (usually F1 or ^)</li>
+        <li>type 'code' in the input and press enter</li>
+        <li>find the code (5 letters)</li>
+        <li>enter the code here</li>
+    </ol>
+    <p class="text-center">
+        click to close this window
+    </p>
+</div>
+
+<!-- menu modal -->
+<div class="d-none position-fixed start-50 top-50 translate-middle p-5 text-center button" style="width: 50%" id="menu" onclick="this.classList.add('d-none');">
+    <div>options / configuration</div>
+</div>
+
+<!-- templates for recurring elements -->
+<template id="template_button" aria-description="template for an action button">
+    <div class="p-3 m-1 btn button" style="width: 33%" id="button_div">
+        <span class="px-2"><i id="button_icon" class="fa"></i></span>
+        <span class="px-2 text-uppercase" id="button_name"></span>
+    </div>
+</template>
+
+<script src="js/main.js" type="module"></script>
+</body>
+</html>

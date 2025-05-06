@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModInfo>
+    <Name value="mgr"/>
+    <Version value="0.0.1"/>
+    <DisplayName value="mgr"/>
+    <Description value="mgr - for 7 Days to Die dedicated dervers"/>
+    <Author value="dwarfmaster"/>
+    <Website value="https://dwarfmaster.com"/>
+</ModInfo>
